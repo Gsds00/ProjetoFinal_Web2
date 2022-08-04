@@ -25,7 +25,7 @@ var produtosRouter = require('./routes/produtos');
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('produtos', produtosRouter);
+app.use('/produtos', produtosRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
