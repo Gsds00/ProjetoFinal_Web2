@@ -1,9 +1,18 @@
 var express = require ('express');
+const { render } = require('../app');
 var router = express.Router();
+var dao = require('../database/dao')
 
 router.get('/', function (request, response){
-    response.render('produtos/listaProduto')
+    dao.list().then( ([rows]) => {
+      response.render('produtos/listaProduto', { produtos: rows})
+    }).catch(err => {
+        console.log(err)
+        response.render('produtos/listaProduto', { produtos: [] })
+    })
+    
 });
+
 router.get('/cadastroProduto',function(request, response){
     response.render('produtos/cadastroProduto')
 });

@@ -42,30 +42,18 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>feijao</td>
-              <td>2</td>
-              <td>7.00</td>
-              <td>Qfeijao</td>
-              <td>sim</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Arroz</td>
-              <td>4</td>
-              <td>6.00</td>
-              <td>Qarroz</td>
-              <td>nao</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>macarrao</td>
-              <td>5</td>
-              <td>5.67</td>
-              <td>Qmacarrao</td>
-              <td>sim</td>
-            </tr>
+             
+              <% for( produto of produtos ) { %>
+                <tr>
+                  <th scope="row"><%= produto.id%> </th>
+                  <td><%= produto.nome%> </td>
+                  <td><%= produto.quantidade%> </td>
+                  <td><%= produto.preco%> </td>
+                  <td><%= produto.marca%> </td>
+                  <td><%= produto.disconto%> </td>
+                </tr>
+              <% } %>
+
           </tbody>
         </table>
       </div>
