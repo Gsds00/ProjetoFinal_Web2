@@ -5,7 +5,7 @@ router.get('/', function (request, response){
     response.render('produtos/listaProduto')
 });
 router.get('/cadastroProduto',function(request, response){
-    request.render('produtos/cadastroProduto')
+    response.render('produtos/cadastroProduto')
 });
 
 module.exports = router;
