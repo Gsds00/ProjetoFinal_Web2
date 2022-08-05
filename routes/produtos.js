@@ -9,9 +9,25 @@ router.get('/', function (request, response){
     }).catch(err => {
         console.log(err)
         response.render('produtos/listaProduto', { produtos: [] })
-    })
-    
+    })  
+
 });
+
+  router.post('/delete', function (request, response) {
+     dao.remove(request.body.id)
+     .then( ([rows]) => {
+        response.redirect('/produtos')
+
+     }).catch(err => {
+        console.log(err)
+        response.redirect('/produtos')
+
+     })
+
+
+    
+  })
+
 
 router.get('/cadastroProduto',function(request, response){
     response.render('produtos/cadastroProduto')

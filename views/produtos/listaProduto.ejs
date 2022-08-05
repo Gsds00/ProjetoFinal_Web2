@@ -27,7 +27,7 @@
           <a class="col-3 navbar-brand" href="#">
             <img src="images/carrinho.jpeg" width="50%" alt="">
           </a>
-          <h1 class="col-8">Listagem de Produtos</h1>
+          <h1 class="col-8">Produtos Comprados</h1>
       </nav>
       <div class="row">
         <table class="table table-striped">
@@ -51,6 +51,12 @@
                   <td><%= produto.preco%> </td>
                   <td><%= produto.marca%> </td>
                   <td><%= produto.disconto%> </td>
+                  <td>
+                    <form action="/produtos/delete" method="post">
+                       <input type="hidden" name="id" values="<%= produto.id%>">
+                      <button class="btn btn-dark" type="submit">Delete</button>
+                    </form>
+                  </td>
                 </tr>
               <% } %>
 

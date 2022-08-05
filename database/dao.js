@@ -7,7 +7,8 @@ let operations = {
 findById(id){},
 save: function(dadospro){},
 update: function(dadospro){},
-remove: function(id){},
-
+remove: function(id){
+      return pool.promise().execute('delete from dadospro where id= ?' , [id])
+  },
 }
 module.exports = operations
