@@ -28,15 +28,14 @@ router.get('/', function (request, response){
         request.flash('error', 'Ocorreu um erro ao apagar o produto.')
         response.redirect('/produtos')
 
-     })
-
-
-    
+     })    
   })
-
-
 router.get('/cadastroProduto',function(request, response){
     response.render('produtos/cadastroProduto')
 });
+router.post('/save', function (require, response) {
+  console.log(request.body)
+  response.redirect('/produtos')
+})
 
 module.exports = router;
