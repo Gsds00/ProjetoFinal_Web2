@@ -29,14 +29,25 @@
           </a>
           <h1 class="col-8">Produtos Comprados</h1>
       </nav>
+
       <div class="row">
 
-        <div class="alert alert-primary" role="alert">
-          This is a primary alert—check it out!</div>
 
-          <div class="alert alert-danger" role="alert">
-            This is a danger alert—check it out!
-          </div>
+        <%= locals.messages.success %>  
+
+          <% if (locals.messages.success) { %>
+            <div class="alert alert-success" role="alert">
+              <%= locals.messages.success %>  
+              </div>
+            <% }%>
+
+            <% if (locals.messages.error) { %>
+              <div class="alert alert-danger" role="alert">
+                <%= locals.messages.error %> 
+              </div>
+            <% } %>
+           
+         
 
         <table class="table table-striped">
           <thead>

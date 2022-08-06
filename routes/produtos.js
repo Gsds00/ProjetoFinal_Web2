@@ -16,10 +16,12 @@ router.get('/', function (request, response){
   router.post('/delete', function (request, response) {
      dao.remove(request.body.id)
      .then( ([rows]) => {
+      request.flash('success', 'Produto apagado.')
         response.redirect('/produtos')
 
      }).catch(err => {
         console.log(err)
+        request.flash('error', 'Ocorreu um erro ao apagar o produto.')
         response.redirect('/produtos')
 
      })
