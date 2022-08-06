@@ -15,9 +15,13 @@ router.get('/', function (request, response){
 
   router.post('/delete', function (request, response) {
      dao.remove(request.body.id)
-     .then( ([rows]) => {
+     .then( ([result]) => {
+      console.log(result)
+      if(result.affectedRows > 0)
       request.flash('success', 'Produto apagado.')
-        response.redirect('/produtos')
+      else
+        request.flash('sucess', `nao foi encontrado no dados produto com id = ${request.body.id}`)
+     response.redirect('/produtos')
 
      }).catch(err => {
         console.log(err)
