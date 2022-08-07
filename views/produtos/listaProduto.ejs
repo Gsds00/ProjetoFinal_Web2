@@ -73,10 +73,14 @@
                   <td><%= produto.marca%> </td>
                   <td><%= produto.disconto%> </td>
                   <td>
+                    
                     <form action="/produtos/delete" method="post">
                        <input type="hidden" name="id" value="<%= produto.id%>">
                       <button class="btn btn-dark" type="submit">Delete</button>
                     </form>
+
+                      <a class="rounded-circle btn btn-info" href="/produtos/cadastroProduto?id">Editar</a>
+
                   </td>
                 </tr>
               <% } %>
