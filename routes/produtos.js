@@ -30,10 +30,15 @@ router.get('/', function (request, response){
 
      })    
   })
-router.get('/cadastroProduto',function(request, response){
+
+
+
+
+
+router.get('/cadastroProduto', function (request, response){
     response.render('produtos/cadastroProduto')
 });
-router.post('/save', function (require, response) {
+router.post('/save', function (request, response) {
   console.log(request.body)
   response.redirect('/produtos')
 })
