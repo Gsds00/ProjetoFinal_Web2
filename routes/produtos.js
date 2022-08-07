@@ -31,16 +31,22 @@ router.get('/', function (request, response){
      })    
   })
 
-
-
-
-
-router.get('/cadastroProduto', function (request, response){
+  router.get('/cadastroProduto', function (request, response){
     response.render('produtos/cadastroProduto')
 });
+
 router.post('/save', function (request, response) {
-  console.log(request.body)
-  response.redirect('/produtos')
+dao.save(request.body)
+.then( ([result]) => {
+     request.flash('success',`produto cadastrado.`)
+     response.redirect('/produtos')
+}).catch( err => {
+  console.log(err)
+    request.flash('error', 'nao é possivel cadastrar.')
+    response.redirect('/produtos')
+
+})
+
 })
 
 module.exports = router;
