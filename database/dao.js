@@ -6,7 +6,7 @@ let operations = {
     return pool.promise().query('select * from dadospro')},
 findById(id){},
 save: function(dadospro){
-  return pool.promise().execute(' INSERT INTO dadospro(nome, quantidade, preco, marca, disconto)VALUES (?,?,?,?,?)', [produto.nome, dadospro.quantidade, dadospro.preco, dadospro.marca,dadospro.disconto])
+  return pool.promise().execute(' INSERT INTO dadospro(nome, quantidade, preco, marca, disconto)VALUES (?,?,?,?,?)', [dadospro.nome, dadospro.quantidade, dadospro.preco, dadospro.marca,dadospro.disconto])
 },
 update: function(dadospro){},
 remove: function(id){
