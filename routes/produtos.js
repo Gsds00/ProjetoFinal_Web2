@@ -53,10 +53,24 @@ router.get('/', function (request, response){
 });
 
 router.post('/save', function (request, response) {
-  console.log(request.body)
-dao.save(request.body)
+   
+
+let operacao;
+ if (request.body.id){
+      operacao = dao.update
+      success = `Produto Atualizado.`
+ }
+  else{
+    operacao = dao.save
+    success = `Produto Cadastrado.`
+    
+
+  }
+
+
+operacao(request.body)
 .then( ([result]) => {
-     request.flash('success',`produto cadastrado.`)
+     request.flash('success',success)
      response.redirect('/produtos')
 }).catch( err => {
   console.log(err)
