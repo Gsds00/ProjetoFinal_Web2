@@ -31,8 +31,25 @@ router.get('/', function (request, response){
      })    
   })
 
-  router.get('/cadastroProduto', function (request, response){
-    response.render('produtos/cadastroProduto')
+  router.get('/cadastroProduto', async function (request, response){
+  let row ={
+       nome:'',
+       quantidade:'',
+       preco:'',
+       marca:'',
+       disconto:''
+    }
+    if( request.query.id){
+
+      [result] = await dao.findById(request.query.id)
+      console.log(result)
+      row= result[0] 
+      console.log(row)
+    }
+
+
+    
+    response.render('produtos/cadastroProduto',{produto: row})
 });
 
 router.post('/save', function (request, response) {

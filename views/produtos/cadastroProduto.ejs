@@ -39,34 +39,35 @@
       </nav>
 
         <form method="POST" action="/produtos/save">
+          <input type="hidden" name="id" value="<%= produto.id %>">
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Produto:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="nome" value="">
+              <input type="text" class="form-control" name="nome" value="<%= produto.nome %> ">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Quantidade:</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" name="quantidade" value="">
+              <input type="number" class="form-control" name="quantidade" value="<%= produto.quantidade %> ">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">preço:</label>
             <div class="col-sm-10">
-              <input type="number" class="form-control" step="0.01" name="preco" value="">
+              <input type="number" class="form-control" step="0.01" name="preco" value="<%= produto.preco %>">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Marca:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="marca" value="">
+              <input type="text" class="form-control" name="marca" value="<%= produto.marca %>">
             </div>
           </div>
           <div class="form-group row">
             <label class="col-sm-2 col-form-label">Disconto:</label>
             <div class="col-sm-10">
-              <input type="text" class="form-control" name="disconto" value="">
+              <input type="text" class="form-control" name="disconto" value="<%= produto.disconto %>">
             </div>
           </div>
           <button type="submit" class="btn btn-primary" name="button">Salvar</button>
