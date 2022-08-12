@@ -17,5 +17,8 @@ update: function(dadospro){
 remove: function(id){
       return pool.promise().execute('delete from dadospro where id= ?' , [id])
   },
+search: function(nome){
+  return pool.promise().query('select * from dadospro where nome like ?', ['%'+nome+'%' ])
+}
 }
 module.exports = operations

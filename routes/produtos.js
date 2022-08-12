@@ -82,8 +82,20 @@ operacao(request.body)
 })
 
 router.get('/search', function(request, response){
-    console.log(request.query.nome)
-    response.redirect('/produtos')
+
+  if(request.query.nome){
+    dao.search(request.query.nome)
+    .then( ([rows]) => {
+       response.render('produtos/listaProduto', {produtos: rows })
+    }).catch(err => {
+        console.log(err)
+        request.flash('error', 'nao é possivel buscar produto')
+        response.redirect('/produtos')
+    })
+  }else{
+      response.redirect('/produtos')
+
+  }
 
 })
 
