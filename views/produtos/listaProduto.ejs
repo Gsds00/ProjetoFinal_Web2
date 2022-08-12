@@ -38,7 +38,7 @@
             <button class="col-auto btn btn-primary"><i class="bi bi-binoculars"></i></button>
           </form>
 
-          <a href="/produtos/cadastroProduto" class=" col-1 btn btn-primary">Novo</a>
+          <a href="/produtos/cadastroProduto" class=" col-1 btn btn-primary"><i class="bi bi-box-seam-fill"></i></i></a>
       </nav>
 
       <div class="row">
@@ -82,13 +82,16 @@
                   <td><%= produto.marca%> </td>
                   <td><%= produto.disconto%> </td>
                   <td>
-                    
-                    <form action="/produtos/delete" method="post">
-                       <input type="hidden" name="id" value="<%= produto.id%>">
-                      <button class="btn btn-dark" type="submit">Delete</button>
-                    </form>
+                      <div class="row">
+                        <form class="col-auto" action="/produtos/delete" method="post">
+                          <input type="hidden" name="id" value="<%= produto.id%>">
+                         <button class="rounded-circle btn btn-dark" type="submit"><i class="bi bi-trash3"></i></button>
+                       </form>
 
-                      <a class="rounded-circle btn btn-info" href="/produtos/cadastroProduto?id=<%= produto.id %>">Editar</a>
+                       <a class="col-auto rounded-circle btn btn-info" href="/produtos/cadastroProduto?id=<%= produto.id %>"><i class="bi bi-pen-fill"></i></a>
+
+                      </div>
+
 
                   </td>
                 </tr>
