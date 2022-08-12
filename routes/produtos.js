@@ -77,7 +77,13 @@ operacao(request.body)
     request.flash('error', `nao é possivel cadastrar.`)
     response.redirect('/produtos')
 
+    })
+
 })
+
+router.get('/search', function(request, response){
+    console.log(request.query.nome)
+    response.redirect('/produtos')
 
 })
 
