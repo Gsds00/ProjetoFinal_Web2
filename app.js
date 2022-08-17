@@ -54,7 +54,7 @@ passport.serializeUser(function (user, done){
 passport.deserializeUser( function(id, done){
   dao.findById(id)
   .then( ([rows]) => {
-   let user = rows(0)
+   let user = rows[0]
    return done(null, user)
   }).catch(err => {
      return done(err, null)
