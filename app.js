@@ -8,6 +8,14 @@ var session = require('express-session')
 
 
 
+var indexRouter = require('./routes/index');
+var usersRouter = require('./routes/users');
+var produtosRouter = require('./routes/produtos');
+var loginRouter = require('./routes/login');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy
+
+
 
 var app = express();
 
@@ -25,16 +33,70 @@ app.use(flash())
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-var indexRouter = require('./routes/index');
+/**/
+
+app.use(session({
+  secret: 'notSosecret',
+  cookie: { maxAge: 2 * 60 * 1000 },
+  resave: false,
+  saveUninitialized:false
+}))
+
+app.use(passport.initialize())
+app.use(passport.session())
+
+let dao = require('./database/dao')
+
+passport.serializeUser(function (user, done){
+ done(null, user.id)
+})
+
+passport.deserializeUser( function(id, done){
+  dao.findById(id)
+  .then( ([rows]) => {
+   let user = rows(0)
+   return done(null, user)
+  }).catch(err => {
+     return done(err, null)
+  })
+})
+
+let StrategyConfig = {
+ usernameFiel: 'username',
+ passwordField: 'password'
+}
+passport.use(new localStrategy(StrategyConfig, function (username, password, done){
+
+   dao.findByUsername(username)
+   .then( ([rows]) =>{
+     if (rows.length == 0) return done(null,false)
+
+     let user = rows[0]
+     if(user.password != password) return done(null, false)
+     else return done(null,user)
+   }).catch(err => {
+     console.log(err)
+     return done(err, null)
+   })
+
+}));
+
+
+
+/*var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var produtosRouter = require('./routes/produtos');
-var loginRouter = require('./routes/login')
+var loginRouter = require('./routes/login');
+const passport = require('passport');
+const localStrategy = require('passport-local').Strategy*/
+
 
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/produtos', produtosRouter);
 app.use('/login', loginRouter)
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,5 +113,7 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
 
 module.exports = app;

@@ -19,6 +19,11 @@ remove: function(id){
   },
 search: function(nome){
   return pool.promise().query('select * from dadospro where nome like ?', ['%'+nome+'%' ])
-}
+},
+
+findByUsername:function(username){
+    return pool.promise().query('select * from dadospro where login=?', [username])
+
+  },
 }
 module.exports = operations
