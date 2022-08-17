@@ -81,7 +81,10 @@ passport.use(new localStrategy(StrategyConfig, function (username, password, don
 
 }));
 
-
+let middlewareAutorization = function( req, resp, next){
+   if(req.isAuthenticated()) return next()
+   else resp.redirect('/login')
+}
 
 /*var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
@@ -94,7 +97,7 @@ const localStrategy = require('passport-local').Strategy*/
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/produtos', produtosRouter);
+app.use('/produtos', middlewareAutorization, produtosRouter);
 app.use('/login', loginRouter)
 
 
