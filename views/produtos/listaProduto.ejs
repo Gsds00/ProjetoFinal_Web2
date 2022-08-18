@@ -33,7 +33,7 @@
 
           <form method="GET" action="/produtos/search" class="col-4 row">
             <div class="col-auto">
-                <input type="search" name="nome" class="form-control" placeholder="Localizar.">
+                <input type="search" name="nome" class="form-control" placeholder="Nome do Cliente">
             </div>
             <button class="rounded-circle col-auto btn btn-primary"><i class="bi bi-binoculars"></i></button>
           </form>
@@ -64,11 +64,11 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Produto</th>
+              <th scope="col">nome/Produto</th>
               <th scope="col">Quantidade</th>
               <th scope="col">Preço/unid</th>
               <th scope="col">Marca</th>
-              <th scope="col">Disconto</th>
+              <th scope="col">nome/Cliente</th>
             </tr>
           </thead>
           <tbody>
@@ -76,11 +76,11 @@
               <% for( produto of produtos ) { %>
                 <tr>
                   <th scope="row"><%= produto.id%> </th>
-                  <td><%= produto.nome%> </td>
+                  <td><%= produto.nomepr%> </td>
                   <td><%= produto.quantidade%> </td>
                   <td><%= produto.preco%> </td>
                   <td><%= produto.marca%> </td>
-                  <td><%= produto.disconto%> </td>
+                  <td><%= produto.nome%> </td>
                   <td>
                       <div class="row">
                         <form class="col-auto" action="/produtos/delete" method="post">
