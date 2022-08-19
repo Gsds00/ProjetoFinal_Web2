@@ -5,10 +5,93 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login</title>
+
+    <style>
+   input{
+      border-radius: 10%;
+   }
+
+      body {font-family: Arial, Helvetica, sans-serif;
+         background-color: rgb(210, 214, 218);
+      }
+      form {border: 30px solid #864848;
+        
+         border-radius: 20%;
+      }
+      
+      input[type=text], input[type=password] {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 5px solid #9b3a3a;
+        box-sizing: border-box;
+      }
+      
+      button {
+        background-color: #9b3a3a;
+        color: rgb(246, 247, 244);
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+      
+      button:hover {
+        opacity: 0.8;
+      }
+      
+      .cancelbtn {
+        width: auto;
+        padding: 10px 18px;
+        background-color: #9b3a3a;
+      }
+      
+      .imgcontainer {
+        text-align: center;
+        margin: 24px 0 12px 0;
+      }
+      
+      img.carrinho {
+        width: 10%;
+        border-radius: 50%;
+      }
+      
+      .box {
+
+        border-radius: 40%;
+        text-align: center;
+        
+        padding: 16px;
+      }
+      
+      span.psw {
+        float: right;
+        padding-top: 16px;
+      }
+    
+       h3{
+         text-align: center;
+       }
+    
+    @media screen and (max-width: 300px) {
+        span.psw {
+           display: block;
+           float: none;
+        }
+        .cancelbtn {
+           width: 100%;
+        }
+      }
+           
+
+      </style>
+
 </head>
 <body>
     
-       <h1>login</h1>
+       <h1>SuperMercadoQpreço</h1>
         
      <% if (message) { %>
       <p style="color: red;">
@@ -16,12 +99,29 @@
       </p>
      <% } %>
 
-    <form action="/login" method="POST">
-
+     <form action="/login" method="POST">
+      <div class="imgcontainer">
+        <img src="/images/carrinho.jpeg" alt="carrinho" class="carrinho">
+      </div>
+    
+      <div class="box">
+        <label for="uname"><b>Username</b></label>
         <input type="text" name="username">
+    
+        <label for="psw"><b>Password</b></label>
         <input type="password" name="password">
-        <input type="submit" value="login">
+            
+        <button type="submit">Login</button>
+        <label>
+          <input type="submit" value="login">
+        </label>
+      </div>
+    
+      <h3>O melhor lugar para comprar. </h3>
     </form>
+
+
+    
      
 </body>
 </html>
